@@ -1,4 +1,11 @@
 
+// importing the basic java system libraries
+import java.util.Scanner;
+import java.util.ArrayList;
+
+// system out print
+import java.io.*;
+
 class Main {
   private static UserList userList = new UserList();
   private static CarList carList = new CarList();
@@ -97,6 +104,169 @@ class Main {
     }
   }
 
+  // Confirm booking
+  private static void confirmBooking() {
+    System.out.println("Please enter the booking ID:");
+    int bookingId = scanner.nextInt();
+    scanner.nextLine(); // consume newline character
+    Booking booking = carList.getBookingById(bookingId);
+    if (booking == null) {
+      System.out.println("Booking ID not found.");
+      return;
+    }
+    booking.setStatus("Confirmed");
+    System.out.println("Booking confirmed.");
+  }
+
+  // Delete booking
+  private static void deleteBooking() {
+    System.out.println("Please enter the booking ID:");
+    int bookingId = scanner.nextInt();
+    scanner.nextLine(); // consume newline character
+    Booking booking = carList.getBookingById(bookingId);
+    if (booking == null) {
+      System.out.println("Booking ID not found.");
+      return;
+    }
+    carList.deleteBooking(booking);
+    System.out.println("Booking deleted.");
+  }
+
+  // View booking information
+  private static void viewBookingInfo() {
+    System.out.println("Please enter the booking ID:");
+    int bookingId = scanner.nextInt();
+    scanner.nextLine(); // consume newline character
+    Booking booking = carList.getBookingById(bookingId);
+    if (booking == null) {
+      System.out.println("Booking ID not found.");
+      return;
+    }
+    System.out.println(booking);
+  }
+
+  // Search booking by car number
+  private static void searchBooking() {
+    System.out.println("Please enter the car number:");
+    String carNumber = scanner.nextLine();
+    Booking booking = carList.searchBooking(carNumber);
+    if (booking == null) {
+      System.out.println("Booking not found.");
+      return;
+    }
+    System.out.println(booking);
+  }
+
+  // View Customer Information
+  private static void viewCustomerInfo() {
+    System.out.println("Please enter the customer's username:");
+    String username = scanner.nextLine();
+    Customer customer = (Customer) userList.getUser(username);
+    if (customer == null) {
+      System.out.println("Customer not found.");
+      return;
+    }
+    System.out.println(customer);
+  }
+
+  // Search Customer by Name
+  private static void searchCustomer() {
+    System.out.println("Please enter the customer's name:");
+    String name = scanner.nextLine();
+    Customer customer = (Customer) userList.searchUser(name);
+    if (customer == null) {
+      System.out.println("Customer not found.");
+      return;
+    }
+    System.out.println(customer);
+  }
+
+  // Add a new car to the car inventory
+  private static void addCar() {
+    System.out.println("Please enter the car number:");
+    String carNumber = scanner.nextLine();
+    System.out.println("Please enter the car make:");
+    String make = scanner.nextLine();
+    System.out.println("Please enter the car model:");
+    String model = scanner.nextLine();
+    System.out.println("Please enter the car year:");
+    int year = scanner.nextInt();
+    scanner.nextLine(); // consume newline character
+    System.out.println("Please enter the car color:");
+    String color = scanner.nextLine();
+    System.out.println("Please enter the car price per day:");
+    double pricePerDay = scanner.nextDouble();
+    scanner.nextLine(); // consume newline character
+    System.out.println("Please enter the car status:");
+    String status = scanner.nextLine();
+
+    Car car = new Car(carNumber, make, model, year, color, pricePerDay, status);
+    carList.addCar(car);
+  }
+
+  // Edit car information
+  private static void editCar() {
+    System.out.println("Please enter the car ID:");
+    int carId = scanner.nextInt();
+    scanner.nextLine(); // consume newline character
+    Car car = carList.getCarById(carId);
+    if (car == null) {
+      System.out.println("Car ID not found.");
+      return;
+    }
+
+    System.out.println("Please enter the car number:");
+    String carNumber = scanner.nextLine();
+    System.out.println("Please enter the car make:");
+    String make = scanner.nextLine();
+    System.out.println("Please enter the car model:");
+    String model = scanner.nextLine();
+    System.out.println("Please enter the car year:");
+    int year = scanner.nextInt();
+    scanner.nextLine(); // consume newline character
+    System.out.println("Please enter the car color:");
+    String color = scanner.nextLine();
+    System.out.println("Please enter the car price per day:");
+    double pricePerDay = scanner.nextDouble();
+    scanner.nextLine(); // consume newline character
+    System.out.println("Please enter the car status:");
+    String status = scanner.nextLine();
+
+    car.setCarNumber(carNumber);
+    car.setMake(make);
+    car.setModel(model);
+    car.setYear(year);
+    car.setColor(color);
+    car.setPricePerDay(pricePerDay);
+    car.setStatus(status);
+  }
+
+  // Approve a customer account
+  private static void approveCustomer() {
+    System.out.println("Please enter the customer ID:");
+    int customerId = scanner.nextInt();
+    scanner.nextLine(); // consume newline character
+    Customer customer = userList.getCustomerById(customerId);
+    if (customer == null) {
+      System.out.println("Customer ID not found.");
+      return;
+    }
+    customer.setApproved(true);
+  }
+
+  // Delete a customer account
+  private static void deleteCustomer() {
+    System.out.println("Please enter the customer ID:");
+    int customerId = scanner.nextInt();
+    scanner.nextLine(); // consume newline character
+    Customer customer = userList.getCustomerById(customerId);
+    if (customer == null) {
+      System.out.println("Customer ID not found.");
+      return;
+    }
+    userList.deleteCustomer(customer);
+  }
+
   // Display menu for customer
   private static void customerMenu(Customer customer) {
     while (true) {
@@ -169,6 +339,123 @@ class Main {
       }
 
       System.out.println();
+    }
+  }
+  // update Booking information
+  private static void updateBooking(Booking booking) {
+    System.out.println("Update Booking");
+    System.out.println("1. Update booking ID");
+    System.out.println("2. Update car ID");
+    System.out.println("3. Update customer ID");
+    System.out.println("4. Update booking start date");
+    System.out.println("5. Update booking end date");
+    System.out.println("6. Update booking status");
+    System.out.println("7. Back to main menu");
+    System.out.print("Please enter an option: ");
+
+    Scanner scanner = new Scanner(System.in);
+    int option = scanner.nextInt();
+    scanner.nextLine(); // consume newline character
+
+    switch (option) {
+      case 1:
+        System.out.print("Please enter your new booking ID: ");
+        int bookingID = scanner.nextInt();
+        booking.setBookingID(bookingID);
+        break;
+      case 2:
+        System.out.print("Please enter your new car ID: ");
+        int carID = scanner.nextInt();
+        booking.setCarID(carID);
+        break;
+      case 3:
+        System.out.print("Please enter your new customer ID: ");
+        int customerID = scanner.nextInt();
+        booking.setCustomerID(customerID);
+        break;
+      case 4:
+        System.out.print("Please enter your new booking start date: ");
+        String bookingStartDate = scanner.nextLine();
+        booking.setBookingStartDate(bookingStartDate);
+        break;
+      case 5:
+        System.out.print("Please enter your new booking end date: ");
+        String bookingEndDate = scanner.nextLine();
+        booking.setBookingEndDate(bookingEndDate);
+        break;
+      case 6:
+        System.out.print("Please enter your new booking status: ");
+        String bookingStatus = scanner.nextLine();
+        booking.setBookingStatus(bookingStatus);
+        break;
+      case 7:
+        return;
+      default:
+        System.out.println("Invalid option. Please try again.");
+        break;
+    }
+  }
+
+  // Update Car information
+  private static void updateCar(Car car) {
+    System.out.println("Update Car");
+    System.out.println("1. Update car number");
+    System.out.println("2. Update car make");
+    System.out.println("3. Update car model");
+    System.out.println("4. Update car year");
+    System.out.println("5. Update car color");
+    System.out.println("6. Update car price per day");
+    System.out.println("7. Update car status");
+    System.out.println("8. Back to main menu");
+    System.out.print("Please enter an option: ");
+
+    Scanner scanner = new Scanner(System.in);
+    int option = scanner.nextInt();
+    scanner.nextLine(); // consume newline character
+
+    switch (option) {
+      case 1:
+        System.out.print("Please enter your new car number: ");
+        String carNumber = scanner.nextLine();
+        car.setCarNumber(carNumber);
+        break;
+      case 2:
+        System.out.print("Please enter your new car make: ");
+        String make = scanner.nextLine();
+        car.setMake(make);
+        break;
+      case 3:
+        System.out.print("Please enter your new car model: ");
+        String model = scanner.nextLine();
+        car.setModel(model);
+        break;
+      case 4:
+        System.out.print("Please enter your new car year: ");
+        int year = scanner.nextInt();
+        scanner.nextLine(); // consume newline character
+        car.setYear(year);
+        break;
+      case 5:
+        System.out.print("Please enter your new car color: ");
+        String color = scanner.nextLine();
+        car.setColor(color);
+        break;
+      case 6:
+        System.out.print("Please enter your new car price per day: ");
+        double pricePerDay = scanner.nextDouble();
+        scanner.nextLine(); // consume newline character
+        car.setPricePerDay(pricePerDay);
+        break;
+      case 7:
+        System.out.print("Please enter your new car status: ");
+        String status = scanner.nextLine();
+        car.setStatus(status);
+        break;
+      case 8:
+        return;
+      default:
+        System.out.println("Invalid option. Please try again.");
+        break;
     }
   }
 
@@ -258,45 +545,6 @@ class Main {
         break;
       default:
         System.out.println("Invalid option. Please try again.");
-    }
-  }
-
-}
-
-  private static void adminMenu(Scanner scanner, CarRentalSystem rentalSystem) {
-    System.out.println("Admin menu:");
-    System.out.println("1. User account management");
-    System.out.println("2. Car information management");
-    System.out.println("3. Customer account management");
-    System.out.println("4. Booking management");
-    System.out.println("5. Exit");
-
-    boolean exit = false;
-    while (!exit) {
-      System.out.print("Please enter your option: ");
-      int option = scanner.nextInt();
-      scanner.nextLine(); // consume newline character
-
-      switch (option) {
-        case 1:
-          userAccountManagement(scanner, rentalSystem);
-          break;
-        case 2:
-          carInformationManagement(scanner, rentalSystem);
-          break;
-        case 3:
-          customerAccountManagement(scanner, rentalSystem);
-          break;
-        case 4:
-          bookingManagement(scanner, rentalSystem);
-          break;
-        case 5:
-          System.out.println("Thank you for using the car rental system!");
-          exit = true;
-          break;
-        default:
-          System.out.println("Invalid option. Please try again.");
-      }
     }
   }
 
