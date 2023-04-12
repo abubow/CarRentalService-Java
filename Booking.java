@@ -46,4 +46,15 @@ public class Booking {
   public String getStatus() {
     return status;
   }
+
+  // Setter methods
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+  // Method to edit booking information
+  public void editBookingInformation(String pickupLocation, String dropoffLocation) {
+    this.pickupLocation = pickupLocation;
+    this.dropoffLocation = dropoffLocation;
+  }
 }
