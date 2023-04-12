@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class CarRentalSystem {
   private ArrayList<User> users;
   private ArrayList<Car> cars;
