@@ -70,4 +70,19 @@ public class User {
   public boolean authenticateUserLogin(String username, String password) {
     return (this.email.equals(username) && this.password.equals(password));
   }
+
+  // Method to get user role
+  public String getUserRole() {
+    return "customer";
+  }
+
+  // Method to update user profile information
+  public void updateUserProfile(String name, int age, String gender, String email, String phone, String password) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+    this.email = email;
+    this.phone = phone;
+    this.password = password;
+  }
 }
