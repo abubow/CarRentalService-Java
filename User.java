@@ -6,10 +6,10 @@ public class User {
   private String phone;
   private String password;
   private static int idCounter = 0;
-  private string userId;
+  private String userId;
 
   // Constructor
-  public User(String name, int age, String gender, String email, String phone, String password, int userId) {
+  public User(String name, int age, String gender, String email, String phone, String password) {
     this.name = name;
     this.age = age;
     this.gender = gender;

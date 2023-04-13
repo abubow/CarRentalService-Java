@@ -5,9 +5,10 @@ public class Customer extends User {
   private static int idCounter = 0;
   // Constructor
   public Customer(String name, int age, String gender, String email, String phone, String password) {
-    super(name, age, gender, email, phone, password);
-    bookings = new ArrayList<>();
+    // public User(String name, int age, String gender, String email, String phone, String password, int userId) {
+    super(name, age, gender, email, phone, password);  
     id = "C" + idCounter++;
+    bookings = new ArrayList<>();
   }
 
   // Method to register with the system

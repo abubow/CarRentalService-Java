@@ -6,7 +6,7 @@ public class Car {
   private String plateNumber;
   private String status;
   private static int idCounter = 0;
-  private string carId;
+  private String carId;
 
   // Constructor
   public Car(String make, String model, int year, String color, String plateNumber) {
@@ -23,7 +23,7 @@ public class Car {
   public String getCarId() {
     return carId;
   }
-  
+
   public String getMake() {
     return make;
   }
