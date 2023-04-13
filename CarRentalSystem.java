@@ -14,21 +14,21 @@ public class CarRentalSystem {
   }
 
   // Method to login to the system
-  public User loginCustomer(String email, String password) {
+  public Customer loginCustomer(String email, String password) {
     for (User user : users) {
       if (user.getEmail().equals(email) && user.getPassword().equals(password) && user instanceof Customer) {
         currentUser = user;
-        return user;
+        return (Customer) user;
       }
     }
     return null;
   }
 
-  public User loginAdmin(String email, String password) {
+  public Admin loginAdmin(String email, String password) {
     for (User user : users) {
       if (user.getEmail().equals(email) && user.getPassword().equals(password) && user instanceof Admin) {
         currentUser = user;
-        return user;
+        return (Admin) user;
       }
     }
     return null;
@@ -46,6 +46,17 @@ public class CarRentalSystem {
     return true;
   }
 
+  // overload method to add a new customer to the system
+  public boolean addCustomer(Customer customer) {
+    for (User user : users) {
+      if (user.getEmail().equals(customer.getEmail())) {
+        return false;
+      }
+    }
+    users.add(customer);
+    return true;
+  }
+
   // Method to add a new admin to the system
   public boolean addAdmin(String name, int age, String gender, String email, String phone, String password) {
     for (User user : users) {
@@ -56,6 +67,17 @@ public class CarRentalSystem {
     Admin newAdmin = new Admin(name, age, gender, email, phone, password);
 
     users.add(newAdmin);
+    return true;
+  }
+
+  // overload method to add a new admin to the system
+  public boolean addAdmin(Admin admin) {
+    for (User user : users) {
+      if (user.getEmail().equals(admin.getEmail())) {
+        return false;
+      }
+    }
+    users.add(admin);
     return true;
   }
 
@@ -138,7 +160,8 @@ public class CarRentalSystem {
     if (currentUser == null) {
       return false;
     }
-    // public Booking(String bookingId, User user, Car car, String bookingDate, String
+    // public Booking(String bookingId, User user, Car car, String bookingDate,
+    // String
     // pickupLocation, String dropoffLocation) {
 
     Booking newBooking = new Booking(bookingId, currentUser, car, bookingDate, pickupLocation, dropoffLocation);

@@ -1,5 +1,5 @@
 public class Booking {
-  private int bookingId;
+  private String bookingId;
   private User user;
   private Car car;
   private String bookingDate;
@@ -8,7 +8,7 @@ public class Booking {
   private String status;
 
   // Constructor
-  public Booking(int bookingId, User user, Car car, String bookingDate, String pickupLocation, String dropoffLocation) {
+  public Booking(String bookingId, User user, Car car, String bookingDate, String pickupLocation, String dropoffLocation) {
     this.bookingId = bookingId;
     this.user = user;
     this.car = car;
