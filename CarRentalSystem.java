@@ -185,4 +185,9 @@ public class CarRentalSystem {
     }
     return false;
   }
+
+  // Method to view all bookings
+  public ArrayList<Booking> viewAllBookings() {
+    return bookings;
+  }
 }
