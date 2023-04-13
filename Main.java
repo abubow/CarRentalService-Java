@@ -197,6 +197,7 @@ class Main {
       Customer customer = new Customer(name, age, gender, email, phoneNumber, password);
       if (carRentalSystem.addCustomer(customer)) {
         System.out.println("Customer registered successfully");
+        return;
       } else {
         System.out.println("Customer already exists");
       }
@@ -232,6 +233,7 @@ class Main {
       Admin admin = new Admin(name, age, gender, email, phoneNumber, password);
       if (carRentalSystem.addAdmin(admin)) {
         System.out.println("Admin registered successfully");
+        return;
       } else {
         System.out.println("Admin already exists");
       }
