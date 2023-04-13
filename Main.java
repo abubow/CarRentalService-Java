@@ -186,7 +186,7 @@ class Main {
       do {
         System.out.println("Enter your gender (M/F): ");
         gender = scanner.nextLine();
-      } while (gender.toLowerCase() != "m" || gender.toLowerCase() != "f");
+      } while (gender.toLowerCase() != "m" && gender.toLowerCase() != "f");
       System.out.println("Enter your email: ");
       String email = scanner.nextLine();
       System.out.println("Enter your password: ");
@@ -219,7 +219,8 @@ class Main {
       do {
         System.out.println("Enter your gender (M/F): ");
         gender = scanner.nextLine();
-      } while (gender.toLowerCase() != "m" || gender.toLowerCase() != "f");
+      } while (gender.toLowerCase() != "m" && gender.toLowerCase() != "f");
+
       System.out.println("Enter your email: ");
       String email = scanner.nextLine();
       System.out.println("Enter your phone number: ");
