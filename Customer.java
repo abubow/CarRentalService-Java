@@ -58,7 +58,7 @@ public class Customer extends User {
   }
 
   // Method to cancel a booking
-  public boolean cancelBooking(int bookingId) {
+  public boolean cancelBooking(String bookingId) {
     for (Booking booking : bookings) {
       if (booking.getBookingId() == bookingId) {
         bookings.remove(booking);
