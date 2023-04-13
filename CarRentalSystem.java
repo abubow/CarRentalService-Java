@@ -83,7 +83,7 @@ public class CarRentalSystem {
   }
 
   // Method to delete a car
-  public boolean deleteCar(int carId) {
+  public boolean deleteCar(String carId) {
     for (Car car : cars) {
       if (car.getCarId() == carId) {
         if (car.getStatus().equals("booked")) {
@@ -97,7 +97,7 @@ public class CarRentalSystem {
   }
 
   // Method to update a car's information
-  public boolean updateCarInformation(int carId, String make, String model, int year, String color,
+  public boolean updateCarInformation(String carId, String make, String model, int year, String color,
       String plateNumber) {
     for (Car car : cars) {
       if (car.getCarId() == carId) {
@@ -112,7 +112,7 @@ public class CarRentalSystem {
   }
 
   // Method to delete a user
-  public boolean deleteUser(int userId) {
+  public boolean deleteUser(String userId) {
     for (User user : users) {
       if (user.getUserId() == userId) {
         users.remove(user);
@@ -133,12 +133,12 @@ public class CarRentalSystem {
   }
 
   // Method to create a new booking
-  public boolean createBooking(int bookingId, Car car, String bookingDate, String pickupLocation,
+  public boolean createBooking(String bookingId, Car car, String bookingDate, String pickupLocation,
       String dropoffLocation) {
     if (currentUser == null) {
       return false;
     }
-    // public Booking(int bookingId, User user, Car car, String bookingDate, String
+    // public Booking(String bookingId, User user, Car car, String bookingDate, String
     // pickupLocation, String dropoffLocation) {
 
     Booking newBooking = new Booking(bookingId, currentUser, car, bookingDate, pickupLocation, dropoffLocation);
@@ -152,7 +152,7 @@ public class CarRentalSystem {
   }
 
   // Method to cancel a booking
-  public boolean cancelBooking(int bookingId) {
+  public boolean cancelBooking(String bookingId) {
     for (Booking booking : bookings) {
       if (booking.getBookingId() == bookingId) {
         bookings.remove(booking);
