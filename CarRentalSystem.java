@@ -8,6 +8,7 @@ public class CarRentalSystem {
   private int adminIdCounter;
   private int carIdCounter;
   private int bookingIdCounter;
+  private User currentUser;
 
   // Constructor
   public CarRentalSystem() {
@@ -18,6 +19,27 @@ public class CarRentalSystem {
     adminIdCounter = 0;
     carIdCounter = 0;
     bookingIdCounter = 0;
+  }
+
+  // Method to login to the system
+  public User loginCustomer(String email, String password) {
+    for (User user : users) {
+      if (user.getEmail().equals(email) && user.getPassword().equals(password) && user instanceof Customer) {
+        currentUser = user;
+        return user;
+      }
+    }
+    return null;
+  }
+
+  public User loginAdmin(String email, String password) {
+    for (User user : users) {
+      if (user.getEmail().equals(email) && user.getPassword().equals(password) && user instanceof Admin) {
+        currentUser = user;
+        return user;
+      }
+    }
+    return null;
   }
 
   // Method to add a new customer to the system
