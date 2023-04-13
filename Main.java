@@ -78,12 +78,49 @@ class Main {
       String password = scanner.nextLine();
       Customer customer = carRentalSystem.loginCustomer(email, password);
       if (customer != null) {
-        customerMenu(customer);
+        // customerMenu(customer);
+        System.out.println("Login successful");
       } else {
         System.out.println("Invalid email or password");
       }
     }
   }
+
+  // customer menu method
+  // public static void customerMenu(Customer customer) {
+  //   // Scanner object
+  //   Scanner scanner = new Scanner(System.in);
+  //   // customer menu
+  //   while (true) {
+  //     System.out.println("Welcome " + customer.getName());
+  //     System.out.println("1. View Cars");
+  //     System.out.println("2. View Bookings");
+  //     System.out.println("3. Book a Car");
+  //     System.out.println("4. Cancel a Booking");
+  //     System.out.println("5. Logout");
+  //     System.out.print("Enter your choice: ");
+  //     int choice = scanner.nextInt();
+  //     scanner.nextLine();
+  //     switch (choice) {
+  //       case 1:
+  //         viewCars();
+  //         break;
+  //       case 2:
+  //         viewBookings(customer);
+  //         break;
+  //       case 3:
+  //         bookCar(customer);
+  //         break;
+  //       case 4:
+  //         cancelBooking(customer);
+  //         break;
+  //       case 5:
+  //         return;
+  //       default:
+  //         System.out.println("Invalid choice");
+  //     }
+  //   }
+  // }
 
   // login admin method
   public static void loginAdmin() {

@@ -5,6 +5,8 @@ public class Car {
   private String color;
   private String plateNumber;
   private String status;
+  private static int idCounter = 0;
+  private string carId;
 
   // Constructor
   public Car(String make, String model, int year, String color, String plateNumber) {
@@ -14,9 +16,14 @@ public class Car {
     this.color = color;
     this.plateNumber = plateNumber;
     this.status = "available";
+    this.carId = "C" + idCounter++;
   }
 
   // Getter methods
+  public String getCarId() {
+    return carId;
+  }
+  
   public String getMake() {
     return make;
   }

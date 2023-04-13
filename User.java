@@ -5,18 +5,25 @@ public class User {
   private String email;
   private String phone;
   private String password;
+  private static int idCounter = 0;
+  private string userId;
 
   // Constructor
-  public User(String name, int age, String gender, String email, String phone, String password) {
+  public User(String name, int age, String gender, String email, String phone, String password, int userId) {
     this.name = name;
     this.age = age;
     this.gender = gender;
     this.email = email;
     this.phone = phone;
     this.password = password;
+    this.userId = "U" + idCounter++;
   }
 
   // Getter methods
+  public String getUserId() {
+    return userId;
+  }
+
   public String getName() {
     return name;
   }

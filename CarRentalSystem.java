@@ -4,10 +4,6 @@ public class CarRentalSystem {
   private ArrayList<User> users;
   private ArrayList<Car> cars;
   private ArrayList<Booking> bookings;
-  private int userIdCounter;
-  private int adminIdCounter;
-  private int carIdCounter;
-  private int bookingIdCounter;
   private User currentUser;
 
   // Constructor
@@ -15,10 +11,6 @@ public class CarRentalSystem {
     users = new ArrayList<>();
     cars = new ArrayList<>();
     bookings = new ArrayList<>();
-    userIdCounter = 0;
-    adminIdCounter = 0;
-    carIdCounter = 0;
-    bookingIdCounter = 0;
   }
 
   // Method to login to the system
@@ -50,7 +42,6 @@ public class CarRentalSystem {
       }
     }
     Customer newCustomer = new Customer(name, age, gender, email, phone, password);
-    newCustomer.setUserId(userIdCounter++);
     users.add(newCustomer);
     return true;
   }
@@ -63,7 +54,6 @@ public class CarRentalSystem {
       }
     }
     Admin newAdmin = new Admin(name, age, gender, email, phone, password);
-    newAdmin.setUserId(adminIdCounter++);
 
     users.add(newAdmin);
     return true;
@@ -78,7 +68,6 @@ public class CarRentalSystem {
     }
     Car newCar = new Car(make, model, year, color, plateNumber);
     newCar.setStatus("available");
-    newCar.setId(carIdCounter++);
     cars.add(newCar);
     return true;
   }
@@ -96,7 +85,7 @@ public class CarRentalSystem {
   // Method to delete a car
   public boolean deleteCar(int carId) {
     for (Car car : cars) {
-      if (car.getId() == carId) {
+      if (car.getCarId() == carId) {
         if (car.getStatus().equals("booked")) {
           return false;
         }
@@ -111,22 +100,11 @@ public class CarRentalSystem {
   public boolean updateCarInformation(int carId, String make, String model, int year, String color,
       String plateNumber) {
     for (Car car : cars) {
-      if (car.getId() == carId) {
+      if (car.getCarId() == carId) {
         if (car.getStatus().equals("booked")) {
           return false;
         }
         car.editCarInformation(make, model, year, color, plateNumber);
-        return true;
-      }
-    }
-    return false;
-  }
-
-  // Method to approve a customer's account
-  public boolean approveCustomerAccount(int userId) {
-    for (User user : users) {
-      if (user instanceof Customer && user.getUserId() == userId) {
-        ((Customer) user).setApproved(true);
         return true;
       }
     }
@@ -157,7 +135,13 @@ public class CarRentalSystem {
   // Method to create a new booking
   public boolean createBooking(int bookingId, Car car, String bookingDate, String pickupLocation,
       String dropoffLocation) {
-    Booking newBooking = new Booking(bookingId, this, car, bookingDate, pickupLocation, dropoffLocation);
+    if (currentUser == null) {
+      return false;
+    }
+    // public Booking(int bookingId, User user, Car car, String bookingDate, String
+    // pickupLocation, String dropoffLocation) {
+
+    Booking newBooking = new Booking(bookingId, currentUser, car, bookingDate, pickupLocation, dropoffLocation);
     if (car.getStatus().equals("available")) {
       car.setStatus("booked");
       bookings.add(newBooking);

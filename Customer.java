@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 public class Customer extends User {
   private ArrayList<Booking> bookings;
-
+  private String id;
+  private static int idCounter = 0;
   // Constructor
   public Customer(String name, int age, String gender, String email, String phone, String password) {
     super(name, age, gender, email, phone, password);
     bookings = new ArrayList<>();
+    id = "C" + idCounter++;
   }
 
   // Method to register with the system
@@ -28,6 +30,13 @@ public class Customer extends User {
     setPassword(password);
   }
 
+  public String getId() {
+    return id;
+  }
+  
+  public void setId(String id) {
+    this.id = id;
+  }
   // Method to check individual bookings
   public ArrayList<Booking> checkBookings() {
     return bookings;
