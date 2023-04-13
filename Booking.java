@@ -19,7 +19,7 @@ public class Booking {
   }
 
   // Getter methods
-  public int getBookingId() {
+  public String getBookingId() {
     return bookingId;
   }
 

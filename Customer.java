@@ -44,8 +44,9 @@ public class Customer extends User {
   }
 
   // Method to create a new booking
-  public boolean createBooking(int bookingId, Car car, String bookingDate, String pickupLocation,
+  public boolean createBooking(String bookingId, Car car, String bookingDate, String pickupLocation,
       String dropoffLocation) {
+    //  public Booking(String bookingId, User user, Car car, String bookingDate, String pickupLocation, String dropoffLocation) {
     Booking newBooking = new Booking(bookingId, this, car, bookingDate, pickupLocation, dropoffLocation);
     if (car.getStatus().equals("available")) {
       car.setStatus("booked");

@@ -134,7 +134,8 @@ class Main {
       String password = scanner.nextLine();
       Admin admin = carRentalSystem.loginAdmin(email, password);
       if (admin != null) {
-        adminMenu(admin);
+        // adminMenu(admin);
+        System.out.println("Login successful");
       } else {
         System.out.println("Invalid email or password");
       }
