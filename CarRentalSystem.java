@@ -12,7 +12,16 @@ public class CarRentalSystem {
     cars = new ArrayList<>();
     bookings = new ArrayList<>();
   }
-
+  // Method to view all customers
+  public ArrayList<Customer> viewAllCustomers() {
+    ArrayList<Customer> customers = new ArrayList<>();
+    for (User user : users) {
+      if (user instanceof Customer) {
+        customers.add((Customer) user);
+      }
+    }
+    return customers;
+  }
   // Method to login to the system
   public Customer loginCustomer(String email, String password) {
     for (User user : users) {
