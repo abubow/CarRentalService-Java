@@ -148,7 +148,7 @@ class Main {
   // view cars method
   public static void viewCars() {
     // Printing the cars
-    ArrayList<Car> cars = carRentalSystem.viewAllUsers();
+    ArrayList<Car> cars = carRentalSystem.viewAllCars();
     for (Car car : cars) {
       // public Car(String make, String model, int year, String color, String
       // plateNumber) {
@@ -192,13 +192,14 @@ class Main {
       }
       System.out.println("Enter the car ID you want to book: ");
       String carId = scanner.nextLine();
+      Car car = carRentalSystem.searchCar(carId);
       System.out.println("Enter the booking date: ");
       String bookingDate = scanner.nextLine();
       System.out.println("Enter the pickup location: ");
       String pickupLocation = scanner.nextLine();
       System.out.println("Enter the dropoff location: ");
       String dropoffLocation = scanner.nextLine();
-      boolean isBooked = carRentalSystem.createBooking(carId, bookingDate, pickupLocation, dropoffLocation);
+      boolean isBooked = carRentalSystem.createBooking(carId, car, bookingDate, pickupLocation, dropoffLocation);
       if (isBooked) {
         System.out.println("Car booked successfully");
         return;
@@ -400,8 +401,8 @@ class Main {
       }
       System.out.println("Invalid booking id");
     }
-    // cancel booking
-    carRentalSystem.cancelBooking(bookingId);
+    // // cancel booking
+    // carRentalSystem.cancelBooking(bookingId);
   }
 
   // view customers method
