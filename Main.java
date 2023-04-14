@@ -452,11 +452,11 @@ class Main {
       if (!found) {
         System.out.println("Customer not found");
       } else {
+        // delete customer
+        carRentalSystem.deleteCustomer(userID);
         break;
       }
     }
-    // delete customer
-    carRentalSystem.deleteCustomer(userID);
   }
 
   // Update Car Info Method
@@ -464,10 +464,11 @@ class Main {
     // Scanner object
     Scanner scanner = new Scanner(System.in);
     // select car
+    Car car;
     while (true) {
       System.out.println("Enter the plate number of the car you want to update: ");
       String plateNumber = scanner.nextLine();
-      Car car = carRentalSystem.searchCar(plateNumber);
+      car = carRentalSystem.searchCar(plateNumber);
       if (car == null) {
         System.out.println("Car not found");
       } else {
@@ -547,7 +548,7 @@ class Main {
     while (true) {
       System.out.println("Enter the Car Id: ");
       String carId = scanner.nextLine();
-      Boolean car = carRentalSystem.removeCar(carId);
+      Boolean car = carRentalSystem.deleteCar(carId);
       if (!car) {
         System.out.println("Car not found or is booked");
       } else {
