@@ -453,7 +453,7 @@ class Main {
         System.out.println("Customer not found");
       } else {
         // delete customer
-        carRentalSystem.deleteCustomer(userID);
+        carRentalSystem.deleteUser(userID);
         break;
       }
     }
@@ -494,7 +494,7 @@ class Main {
       System.out.println("Enter the color: ");
       String color = scanner.nextLine();
       // update car info
-      Boolean done = carRentalSystem.updateCarInformation(car.getCarId(), make, model, year, color);
+      Boolean done = carRentalSystem.updateCarInformation(car.getCarId(), make, model, year, color, car.getPlateNumber());
       if (done) {
         System.out.println("Car info updated successfully");
         return;
