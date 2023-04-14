@@ -154,6 +154,8 @@ class Main {
       // plateNumber) {
       printCar(car);
     }
+    System.out.println("Press any key to continue");
+    system("pause");
   }
 
   // view bookings method
@@ -168,6 +170,8 @@ class Main {
       System.out.println("Car Details: ");
       printCar(booking.getCar());
     }
+    System.out.println("Press any key to continue");
+    system("pause");
   }
 
   // book car method
@@ -593,6 +597,7 @@ class Main {
     Scanner scanner = new Scanner(System.in);
     // register menu
     while (true) {
+      System.out.print("\033[H\033[2J");
       System.out.println("1. Register as Customer");
       System.out.println("2. Register as Admin");
       System.out.println("3. Back");
@@ -650,6 +655,9 @@ class Main {
       Customer customer = new Customer(name, age, gender, email, phoneNumber, password);
       if (carRentalSystem.addCustomer(customer)) {
         System.out.println("Customer registered successfully");
+        System.out.println("Press any key to continue");
+        system("pause");
+
         return;
       } else {
         System.out.println("Customer already exists");
